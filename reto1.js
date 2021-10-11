@@ -19,21 +19,23 @@ addTaskButton.addEventListener("click", function(){
 
     let priorityText;
     let urgencyText;
+    let urgencyClass;
 
-    if(priority = 1){
-        priorityText = "MINOR"
-    } else if(priority = 2){
+    if(priority == 1){
+        priorityText = "MINOR";
+    } else if(priority == 2){
         priorityText = "MEDIUM"
-    } else if(priority = 3){
+    } else if(priority == 3){
         priorityText = "MAJOR"
     }
 
-    if(urgency = 1){
+    if(urgency == 1){
         urgencyText = "today"
-    } else if(urgency = 2){
+    } else if(urgency == 2){
         urgencyText = "tomorrow"
-    } else if(urgency = 3){
+    } else if(urgency == 3){
         urgencyText = "has time"
+        urgencyClass = "hasTime"
     }
     
     let id;
@@ -51,27 +53,10 @@ addTaskButton.addEventListener("click", function(){
 
     let tr = document.createElement("tr");
     tr.innerHTML = `<td class="task"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> ${task}</td>
-                    <td class="prioriry ${priorityText}">${priorityText}</td>
-                    <td class="${urgencyText}">${urgencyText}</td>
+                    <td class="priority"><div class="${priorityText}">${priorityText}</div></td>
+                    <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
                     <td>${lenght} min</td>`;
     tbody.appendChild(tr);
-
-
-    if(priority = 1){
-        document.getElementsByClassName('priority').style.backgroundColor = '#fff'
-    } else if(priority = 2){
-        priorityText = "MEDIUM"
-    } else if(priority = 3){
-        priorityText = "MAJOR"
-    }
-
-    if(urgency = 1){
-        urgencyText = "today"
-    } else if(urgency = 2){
-        urgencyText = "tomorrow"
-    } else if(urgency = 3){
-        urgencyText = "has time"
-    }
 
     modal.hide()
     document.getElementById("modalForm").reset();

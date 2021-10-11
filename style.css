@@ -2,6 +2,36 @@
     font-weight: bold;
 }
 
+.urgency{
+    font-weight: bold;
+}
+
 .priority{
     color: #fff;
+}
+
+.priority div{
+    border-radius: 10px;
+    width: fit-content;
+    padding: 3px 5px;
+}
+
+.MINOR{
+    background-color: #198754 !important;
+}
+.MEDIUM{
+    background-color: #ffc107 !important;  
+}
+.MAJOR{
+    background-color: #dc3545 !important;
+}
+
+.hasTime{
+    color: #198754 !important;
+}
+.tomorrow{
+    color: #ffc107 !important;  
+}
+.today{
+    color: #dc3545 !important;
 }
