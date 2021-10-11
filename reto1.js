@@ -15,11 +15,14 @@ addTaskButton.addEventListener("click", function(){
     let task = document.getElementById("newTask").value;
     let priority = document.getElementById("prioritySelect").value;
     let urgency = document.getElementById("urgencySelect").value;
-    let lenght = document.getElementById("lenghtSelect").value;
+    let lenghtHours = document.getElementById("lenghtSelectHours").value;
+    let lenghtMinutes = document.getElementById("lenghtSelectMinutes").value;
 
     let priorityText;
     let urgencyText;
     let urgencyClass;
+    let lenghtHoursText;
+    let lenghtMinutesText;
 
     if(priority == 1){
         priorityText = "MINOR";
@@ -31,11 +34,25 @@ addTaskButton.addEventListener("click", function(){
 
     if(urgency == 1){
         urgencyText = "today"
+        urgencyClass = "today"
     } else if(urgency == 2){
         urgencyText = "tomorrow"
+        urgencyClass = "tomorrow"
     } else if(urgency == 3){
         urgencyText = "has time"
         urgencyClass = "hasTime"
+    }
+
+    if(lenghtHours == 0){
+        lenghtHoursText = "";
+    } else if(lenghtHours > 0){
+        lenghtHoursText = lenghtHours+" h";
+    }
+
+    if(lenghtMinutes == 0){
+        lenghtMinutesText = "";
+    } else if(lenghtMinutes > 0){
+        lenghtMinutesText = lenghtMinutes+" min";
     }
     
     let id;
@@ -48,14 +65,15 @@ addTaskButton.addEventListener("click", function(){
         task: task,
         priority: priority,
         urgency: urgency,
-        lenght: lenght
+        lenghtHours: lenghtHours,
+        lenghtMinutes: lenghtMinutes
     })
 
     let tr = document.createElement("tr");
     tr.innerHTML = `<td class="task"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> ${task}</td>
                     <td class="priority"><div class="${priorityText}">${priorityText}</div></td>
                     <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
-                    <td>${lenght} min</td>`;
+                    <td>${lenghtHoursText} ${lenghtMinutesText}</td>`;
     tbody.appendChild(tr);
 
     modal.hide()

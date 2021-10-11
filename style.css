@@ -1,3 +1,7 @@
+#container{
+    margin-top: 40px;
+}
+
 .task{
     font-weight: bold;
 }
@@ -34,4 +38,9 @@
 }
 .today{
     color: #dc3545 !important;
+}
+
+.time p{
+    margin: auto 10px;
+    padding-top: 15px;
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Type your awersome task here..." aria-label="Type your awersome task here..." aria-describedby="Add-task" id="newTask">
             <button 
@@ -72,9 +72,12 @@
                             <option value="3">has time</option>­
                         </select>
                     </div>
-                    <label for="lenghtSelect" class="col-form-label">Minutes it will take</label>
+                    <label for="lenghtSelect" class="col-form-label">Time it will take</label>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" min="0" id="lenghtSelect">
+                        <input type="number" class="form-control" min="0" value="0" id="lenghtSelectHours">
+                        <div class="time"><p>hours</p></div>
+                        <input type="number" class="form-control" min="0" value="15" id="lenghtSelectMinutes">
+                        <div class="time"><p>minutes</p></div>
                     </div>
                     </form>
                 </div>
