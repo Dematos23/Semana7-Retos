@@ -17,12 +17,34 @@ addTaskButton.addEventListener("click", function(){
     let urgency = document.getElementById("urgencySelect").value;
     let lenghtHours = document.getElementById("lenghtSelectHours").value;
     let lenghtMinutes = document.getElementById("lenghtSelectMinutes").value;
+    let lenghtBreak = document.getElementById("breakSelect");
 
     let priorityText;
     let urgencyText;
     let urgencyClass;
     let lenghtHoursText;
     let lenghtMinutesText;
+    let lenghtBreakText;
+
+    if(lenghtBreak.checked == true){
+        lenghtBreakText = "Break!"
+        lenghtHoursText = "";
+        lenghtMinutesText = "";
+    } else {
+        lenghtBreakText = "";
+
+        if(lenghtHours == 0){
+            lenghtHoursText = "";
+        } else if(lenghtHours > 0){
+            lenghtHoursText = lenghtHours+" h";
+        }
+    
+        if(lenghtMinutes == 0){
+            lenghtMinutesText = "";
+        } else if(lenghtMinutes > 0){
+            lenghtMinutesText = lenghtMinutes+" min";
+        }
+    };
 
     if(priority == 1){
         priorityText = "MINOR";
@@ -43,17 +65,6 @@ addTaskButton.addEventListener("click", function(){
         urgencyClass = "hasTime"
     }
 
-    if(lenghtHours == 0){
-        lenghtHoursText = "";
-    } else if(lenghtHours > 0){
-        lenghtHoursText = lenghtHours+" h";
-    }
-
-    if(lenghtMinutes == 0){
-        lenghtMinutesText = "";
-    } else if(lenghtMinutes > 0){
-        lenghtMinutesText = lenghtMinutes+" min";
-    }
     
     let id;
     for (let i = 0; i > list.length; i++){
@@ -73,7 +84,7 @@ addTaskButton.addEventListener("click", function(){
     tr.innerHTML = `<td class="task"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> ${task}</td>
                     <td class="priority"><div class="${priorityText}">${priorityText}</div></td>
                     <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
-                    <td>${lenghtHoursText} ${lenghtMinutesText}</td>`;
+                    <td>${lenghtHoursText} ${lenghtMinutesText}${lenghtBreakText}</td>`;
     tbody.appendChild(tr);
 
     modal.hide()
