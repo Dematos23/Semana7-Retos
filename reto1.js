@@ -121,41 +121,41 @@ priorityFilterButton.addEventListener("click", function(){
         let lenghtHoursText;
         let lenghtBreakText;
         
-        if(obj.lenghtMinutes == "0" && obj.lenghtHours == "0"){
+        if(obj.lenghtMinutes == 0 && obj.lenghtHours == 0){
             lenghtBreakText = "break!";
             lenghtHoursText = "";
             lenghtMinutesText = "";
-        } else if(obj.lenghtHours = "0"){
+        } else if(obj.lenghtHours == 0){
             lenghtBreakText = "";
             lenghtHoursText = "";
-            lenghtMinutesText = obj.lenghtMinutes;
-        } else if(obj.lenghtMinutes = "0") {
+            lenghtMinutesText = obj.lenghtMinutes + " min";
+        } else if(obj.lenghtMinutes == 0) {
             lenghtBreakText = "";
-            lenghtHoursText = obj.lenghtHours;
+            lenghtHoursText = obj.lenghtHours + " h";
             lenghtMinutesText = "";
         } else{
             lenghtBreakText = "";
-            lenghtHoursText = obj.lenghtHours;
-            lenghtMinutesText = obj.lenghtMinutes;
+            lenghtHoursText = obj.lenghtHours + " h";
+            lenghtMinutesText = obj.lenghtMinutes + " min";
             }
         
         
 
-        if(obj.priority == "1"){
+        if(obj.priority == 1){
             priorityText = "MINOR";
-        } else if(obj.priority == "2"){
+        } else if(obj.priority == 2){
             priorityText = "MEDIUM"
-        } else if(obj.priority == "3"){
+        } else if(obj.priority == 3){
             priorityText = "MAJOR"
         }
     
-        if(obj.urgency == "1"){
+        if(obj.urgency == 1){
             urgencyText = "today"
             urgencyClass = "today"
-        } else if(obj.urgency == "2"){
+        } else if(obj.urgency == 2){
             urgencyText = "tomorrow"
             urgencyClass = "tomorrow"
-        } else if(obj.urgency == "3"){
+        } else if(obj.urgency == 3){
             urgencyText = "has time"
             urgencyClass = "hasTime"
         }
@@ -165,83 +165,11 @@ priorityFilterButton.addEventListener("click", function(){
                         <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
                         <td class="lenght"><p class="hours">${lenghtHoursText}</p><p class="minutes">${lenghtMinutesText}</p><p class="break">${lenghtBreakText}</p></td>`;
         tbody.appendChild(tr);
+
+        console.log(obj)
     }
 });
 
-let prueba = [
-    {
-        id: 1,
-        lenghtHours: "0",
-        lenghtMinutes: "15",
-        priority: 1,
-        task: "Tarea 1",
-        urgency: 2,
-    },
-    {
-        id: 2,
-        lenghtHours: "1",
-        lenghtMinutes: "15",
-        priority: 3,
-        task: "Tarea 2",
-        urgency: 1,
-    },
-    {
-        id: 3,
-        lenghtHours: "2",
-        lenghtMinutes: "30",
-        priority: 2,
-        task: "Tarea 3",
-        urgency: 3,
-    },
-    {
-        id: 4,
-        lenghtHours: "0",
-        lenghtMinutes: "0",
-        priority: 2,
-        task: "Tarea 4",
-        urgency: 3,
-    },
-    {
-        id: 5,
-        lenghtHours: "0",
-        lenghtMinutes: "15",
-        priority: 3,
-        task: "Tarea 5",
-        urgency: 2,
-    },
-    {
-        id: 6,
-        lenghtHours: "0",
-        lenghtMinutes: "30",
-        priority: 3,
-        task: "Tarea 6",
-        urgency: 1,
-    },
-    {
-        id: 7,
-        lenghtHours: "0",
-        lenghtMinutes: "0",
-        priority: 1,
-        task: "Tarea 7",
-        urgency: 1,
-    },
-    {
-        id: 8,
-        lenghtHours: "0",
-        lenghtMinutes: "20",
-        priority: 3,
-        task: "Tarea 8",
-        urgency: 1,
-    },
-    {
-        id: 9,
-        lenghtHours: "0",
-        lenghtMinutes: "15",
-        priority: 2,
-        task: "Tarea 9",
-        urgency: 3,
-    },
-]
 // FILTRO POR URGENCIA
 let urgencyFilterButton = document.getElementById("urgencyFilter");
 urgencyFilterButton.addEventListener("click", function(){
@@ -268,41 +196,118 @@ urgencyFilterButton.addEventListener("click", function(){
         let lenghtHoursText;
         let lenghtBreakText;
         
-        if(obj.lenghtMinutes == "0" && obj.lenghtHours == "0"){
+        if(obj.lenghtMinutes == 0 && obj.lenghtHours == 0){
             lenghtBreakText = "break!";
             lenghtHoursText = "";
             lenghtMinutesText = "";
-        } else if(obj.lenghtHours = "0"){
+        } else if(obj.lenghtHours == 0){
             lenghtBreakText = "";
             lenghtHoursText = "";
-            lenghtMinutesText = obj.lenghtMinutes;
-        } else if(obj.lenghtMinutes = "0") {
+            lenghtMinutesText = obj.lenghtMinutes + " min";
+        } else if(obj.lenghtMinutes == 0) {
             lenghtBreakText = "";
-            lenghtHoursText = obj.lenghtHours;
+            lenghtHoursText = obj.lenghtHours + " h";
             lenghtMinutesText = "";
         } else{
             lenghtBreakText = "";
-            lenghtHoursText = obj.lenghtHours;
-            lenghtMinutesText = obj.lenghtMinutes;
+            lenghtHoursText = obj.lenghtHours + " h";
+            lenghtMinutesText = obj.lenghtMinutes + " min";
             }
         
         
 
-        if(obj.priority == "1"){
+        if(obj.priority == 1){
             priorityText = "MINOR";
-        } else if(obj.priority == "2"){
+        } else if(obj.priority == 2){
             priorityText = "MEDIUM"
-        } else if(obj.priority == "3"){
+        } else if(obj.priority == 3){
             priorityText = "MAJOR"
         }
     
-        if(obj.urgency == "1"){
+        if(obj.urgency == 1){
             urgencyText = "today"
             urgencyClass = "today"
-        } else if(obj.urgency == "2"){
+        } else if(obj.urgency == 2){
             urgencyText = "tomorrow"
             urgencyClass = "tomorrow"
-        } else if(obj.urgency == "3"){
+        } else if(obj.urgency == 3){
+            urgencyText = "has time"
+            urgencyClass = "hasTime"
+        }
+
+        tr.innerHTML = `<td class="task"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> ${task}</td>
+                        <td class="priority"><div class="${priorityText}">${priorityText}</div></td>
+                        <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
+                        <td class="lenght"><p class="hours">${lenghtHoursText}</p><p class="minutes">${lenghtMinutesText}</p><p class="break">${lenghtBreakText}</p></td>`;
+        tbody.appendChild(tr);
+    }
+});
+
+// FILTRO POR TIEMPO
+let timeFilterButton = document.getElementById("timeFilter");
+timeFilterButton.addEventListener("click", function(){
+    function filtro(a, b){
+        if(a.lenghtTotal < b.lenghtTotal){
+            return -1;
+        } else if(a.lenghtTotal > b.lenghtTotal){
+                return 1;
+            } else{
+                return 0;
+            }
+        };
+    
+    let listTime = list.sort(filtro);
+
+    tbody.innerHTML = "";
+
+    for (let i = 0; i < listTime.length; i++) {
+        
+        let tr = document.createElement("tr");
+
+        let obj = listTime[i];
+        let task = obj.task;
+        let priorityText = obj.priority;
+        let urgencyClass = obj.urgencyClass;
+        let urgencyText = obj.urgency;
+        let lenghtMinutesText;
+        let lenghtHoursText;
+        let lenghtBreakText;
+        
+        if(obj.lenghtMinutes == 0 && obj.lenghtHours == 0){
+            lenghtBreakText = "break!";
+            lenghtHoursText = "";
+            lenghtMinutesText = "";
+        } else if(obj.lenghtHours == 0){
+            lenghtBreakText = "";
+            lenghtHoursText = "";
+            lenghtMinutesText = obj.lenghtMinutes + " min";
+        } else if(obj.lenghtMinutes == 0) {
+            lenghtBreakText = "";
+            lenghtHoursText = obj.lenghtHours + " h";
+            lenghtMinutesText = "";
+        } else{
+            lenghtBreakText = "";
+            lenghtHoursText = obj.lenghtHours + "h";
+            lenghtMinutesText = obj.lenghtMinutes + " min";
+            }
+        
+        
+
+        if(obj.priority == 1){
+            priorityText = "MINOR";
+        } else if(obj.priority == 2){
+            priorityText = "MEDIUM"
+        } else if(obj.priority == 3){
+            priorityText = "MAJOR"
+        }
+    
+        if(obj.urgency == 1){
+            urgencyText = "today"
+            urgencyClass = "today"
+        } else if(obj.urgency == 2){
+            urgencyText = "tomorrow"
+            urgencyClass = "tomorrow"
+        } else if(obj.urgency == 3){
             urgencyText = "has time"
             urgencyClass = "hasTime"
         }
