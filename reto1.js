@@ -13,8 +13,8 @@ let list = [];
 
 addTaskButton.addEventListener("click", function(){
     let task = document.getElementById("newTask").value;
-    let priority = document.getElementById("prioritySelect").value;
-    let urgency = document.getElementById("urgencySelect").value;
+    let priority = parseInt(document.getElementById("prioritySelect").value);
+    let urgency = parseInt(document.getElementById("urgencySelect").value);
     let lenghtHours = document.getElementById("lenghtSelectHours").value;
     let lenghtMinutes = document.getElementById("lenghtSelectMinutes").value;
     let lenghtBreak = document.getElementById("breakSelect");
@@ -103,87 +103,87 @@ let prueba = [
         id: 1,
         lenghtHours: "0",
         lenghtMinutes: "15",
-        priority: "1",
+        priority: 1,
         task: "Tarea 1",
-        urgency: "2",
+        urgency: 2,
     },
     {
         id: 2,
         lenghtHours: "1",
         lenghtMinutes: "15",
-        priority: "3",
+        priority: 3,
         task: "Tarea 2",
-        urgency: "1",
+        urgency: 1,
     },
     {
         id: 3,
         lenghtHours: "2",
         lenghtMinutes: "30",
-        priority: "2",
+        priority: 2,
         task: "Tarea 3",
-        urgency: "3",
+        urgency: 3,
     },
     {
         id: 4,
         lenghtHours: "0",
         lenghtMinutes: "0",
-        priority: "2",
+        priority: 2,
         task: "Tarea 4",
-        urgency: "3",
+        urgency: 3,
     },
     {
         id: 5,
         lenghtHours: "0",
         lenghtMinutes: "15",
-        priority: "3",
+        priority: 3,
         task: "Tarea 5",
-        urgency: "2",
+        urgency: 2,
     },
     {
         id: 6,
         lenghtHours: "0",
         lenghtMinutes: "30",
-        priority: "3",
+        priority: 3,
         task: "Tarea 6",
-        urgency: "1",
+        urgency: 1,
     },
     {
         id: 7,
         lenghtHours: "0",
         lenghtMinutes: "0",
-        priority: "1",
+        priority: 1,
         task: "Tarea 7",
-        urgency: "1",
+        urgency: 1,
     },
     {
         id: 8,
         lenghtHours: "0",
         lenghtMinutes: "20",
-        priority: "3",
+        priority: 3,
         task: "Tarea 8",
-        urgency: "1",
+        urgency: 1,
     },
     {
         id: 9,
         lenghtHours: "0",
         lenghtMinutes: "15",
-        priority: "2",
+        priority: 2,
         task: "Tarea 9",
-        urgency: "3",
+        urgency: 3,
     },
 ]
 
+let urgencySelectLenght = document.getElementById("urgencySelect").length
+
 priorityFilterButton.addEventListener("click", function(){
     let listPriority = [];
+    let prioritySelectLenght = document.getElementById("prioritySelect").length
 
-    // for (let i = 0; i < prueba.length; i++) {
-    //     let obj = prueba[i];
-    //     if(obj.priority = "1"){
-    //         listPriority.push(obj);
-    //     }
-    // }
-    
-    console.log(listPriority);
+    for(let i = 1; i < prioritySelectLenght; i++){
+        let items = list.filter(task => task.priority == i);
+        // listPriority.concat(list);
+        listPriority = listPriority.concat(items);
+    }
 
     tbody.innerHTML = "";
 
