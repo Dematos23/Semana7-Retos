@@ -26,10 +26,12 @@ addTaskButton.addEventListener("click", function(){
     let lenghtMinutesText;
     let lenghtBreakText;
 
-    if(lenghtBreak.checked == true){
+    if(lenghtBreak.checked){
         lenghtBreakText = "Break!"
         lenghtHoursText = "";
+        lenghtHours = 0;
         lenghtMinutesText = "";
+        lenghtMinutes = 0;
     } else {
         lenghtBreakText = "";
 
@@ -84,11 +86,163 @@ addTaskButton.addEventListener("click", function(){
     tr.innerHTML = `<td class="task"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> ${task}</td>
                     <td class="priority"><div class="${priorityText}">${priorityText}</div></td>
                     <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
-                    <td>${lenghtHoursText} ${lenghtMinutesText}${lenghtBreakText}</td>`;
+                    <td class="lenght"><p class="hours">${lenghtHoursText}</p><p class="minutes">${lenghtMinutesText}</p><p class="break">${lenghtBreakText}</p></td>`;
     tbody.appendChild(tr);
 
     modal.hide()
     document.getElementById("modalForm").reset();
     document.getElementById("newTask").value = "";
+
+    console.log(list);
 });
 
+let priorityFilterButton = document.getElementById("priorityFilter");
+
+let prueba = [
+    {
+        id: 1,
+        lenghtHours: "0",
+        lenghtMinutes: "15",
+        priority: "1",
+        task: "Tarea 1",
+        urgency: "2",
+    },
+    {
+        id: 2,
+        lenghtHours: "1",
+        lenghtMinutes: "15",
+        priority: "3",
+        task: "Tarea 2",
+        urgency: "1",
+    },
+    {
+        id: 3,
+        lenghtHours: "2",
+        lenghtMinutes: "30",
+        priority: "2",
+        task: "Tarea 3",
+        urgency: "3",
+    },
+    {
+        id: 4,
+        lenghtHours: "0",
+        lenghtMinutes: "0",
+        priority: "2",
+        task: "Tarea 4",
+        urgency: "3",
+    },
+    {
+        id: 5,
+        lenghtHours: "0",
+        lenghtMinutes: "15",
+        priority: "3",
+        task: "Tarea 5",
+        urgency: "2",
+    },
+    {
+        id: 6,
+        lenghtHours: "0",
+        lenghtMinutes: "30",
+        priority: "3",
+        task: "Tarea 6",
+        urgency: "1",
+    },
+    {
+        id: 7,
+        lenghtHours: "0",
+        lenghtMinutes: "0",
+        priority: "1",
+        task: "Tarea 7",
+        urgency: "1",
+    },
+    {
+        id: 8,
+        lenghtHours: "0",
+        lenghtMinutes: "20",
+        priority: "3",
+        task: "Tarea 8",
+        urgency: "1",
+    },
+    {
+        id: 9,
+        lenghtHours: "0",
+        lenghtMinutes: "15",
+        priority: "2",
+        task: "Tarea 9",
+        urgency: "3",
+    },
+]
+
+priorityFilterButton.addEventListener("click", function(){
+    let listPriority = [];
+
+    // for (let i = 0; i < prueba.length; i++) {
+    //     let obj = prueba[i];
+    //     if(obj.priority = "1"){
+    //         listPriority.push(obj);
+    //     }
+    // }
+    
+    console.log(listPriority);
+
+    tbody.innerHTML = "";
+
+    for (let i = 0; i < listPriority.length; i++) {
+        
+        let tr = document.createElement("tr");
+
+        let obj = listPriority[i];
+        let task = obj.task;
+        let priorityText = obj.priority;
+        let urgencyClass = obj.urgencyClass;
+        let urgencyText = obj.urgency;
+        let lenghtMinutesText;
+        let lenghtHoursText;
+        let lenghtBreakText;
+        
+        if(obj.lenghtMinutes == "0" && obj.lenghtHours == "0"){
+            lenghtBreakText = "break!";
+            lenghtHoursText = "";
+            lenghtMinutesText = "";
+        } else if(obj.lenghtHours = "0"){
+            lenghtBreakText = "";
+            lenghtHoursText = "";
+            lenghtMinutesText = obj.lenghtMinutes;
+        } else if(obj.lenghtMinutes = "0") {
+            lenghtBreakText = "";
+            lenghtHoursText = obj.lenghtHours;
+            lenghtMinutesText = "";
+        } else{
+            lenghtBreakText = "";
+            lenghtHoursText = obj.lenghtHours;
+            lenghtMinutesText = obj.lenghtMinutes;
+            }
+        
+        
+
+        if(obj.priority == "1"){
+            priorityText = "MINOR";
+        } else if(obj.priority == "2"){
+            priorityText = "MEDIUM"
+        } else if(obj.priority == "3"){
+            priorityText = "MAJOR"
+        }
+    
+        if(obj.urgency == "1"){
+            urgencyText = "today"
+            urgencyClass = "today"
+        } else if(obj.urgency == "2"){
+            urgencyText = "tomorrow"
+            urgencyClass = "tomorrow"
+        } else if(obj.urgency == "3"){
+            urgencyText = "has time"
+            urgencyClass = "hasTime"
+        }
+
+        tr.innerHTML = `<td class="task"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> ${task}</td>
+                        <td class="priority"><div class="${priorityText}">${priorityText}</div></td>
+                        <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
+                        <td class="lenght"><p class="hours">${lenghtHoursText}</p><p class="minutes">${lenghtMinutesText}</p><p class="break">${lenghtBreakText}</p></td>`;
+        tbody.appendChild(tr);
+    }
+});

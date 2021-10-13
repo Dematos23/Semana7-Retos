@@ -2,6 +2,15 @@
     margin-top: 40px;
 }
 
+#newTaskButton{
+    margin-left: 5px !important;
+}
+
+.filter{
+    background-color: rgba(100, 100, 100, 0);
+    border: none
+}
+
 .task{
     font-weight: bold;
 }
@@ -12,6 +21,10 @@
 
 .priority{
     color: #fff;
+}
+
+.lenght{
+    font-weight: bold;
 }
 
 .priority div{
@@ -44,4 +57,16 @@
 .time p{
     margin: auto 10px;
     padding-top: 15px;
+}
+
+.hours{
+    color: #ffc107 !important; 
+}
+
+.minutes{
+    color: #198754 !important;
+}
+
+.break{
+    color: #dc3545 !important;
 }

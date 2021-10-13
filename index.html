@@ -14,7 +14,7 @@
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Type your awersome task here..." aria-label="Type your awersome task here..." aria-describedby="Add-task" id="newTask">
             <button 
-                class="btn btn-outline-secondary" 
+                class="btn btn-primary" 
                 type="button" 
                 id="newTaskButton"
                 data-bs-target="#modal"
@@ -29,9 +29,9 @@
                     <table class="table align-middle">
                         <thead>
                         <th>TASK</th>
-                        <th>PRIORITY</th>
-                        <th>URGENCY</th>
-                        <th>LENGHT</th>
+                        <th>PRIORITY <button class="filter" id="priorityFilter">↓</button></th>
+                        <th>URGENCY <button class="filter" id="urgencyFilter">↓</button></th>
+                        <th>LENGHT <button class="filter" id="lenghtFilter">↓</button></th>
                         </thead>
                         <tbody id="tbody"></tbody>
                     </table>
@@ -56,7 +56,11 @@
                     <form id="modalForm">
                     <div class="mb-3">
                         <label for="prioritySelect" class="col-form-label">Priority</label>
-                        <select class="form-select" aria-label="Priority" id="prioritySelect">
+                        <select 
+                        class="form-select" 
+                        aria-label="Priority" 
+                        id="prioritySelect"
+                        required>
                             <option selected>Select priority</option>
                             <option value="1">MINOR</option>
                             <option value="2">MEDIUM</option>
@@ -65,7 +69,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="urgencySelect" class="col-form-label">Urgency</label>
-                        <select class="form-select" aria-label="Priority" id="urgencySelect">
+                        <select 
+                        class="form-select" 
+                        aria-label="Priority" 
+                        id="urgencySelect"
+                        required>
                             <option selected>Select urgency</option>
                             <option value="1">today</option>
                             <option value="2">tomorrow</option>
@@ -89,7 +97,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="addTask">Add task</button>
+                    <button
+                        type="button" 
+                        class="btn btn-primary"
+                        id="addTask"
+                    >Add task</button>
                 </div>
             </div>
         </div>
