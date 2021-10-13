@@ -69,12 +69,8 @@ addTaskButton.addEventListener("click", function(){
         urgencyClass = "hasTime"
     }
 
-    
-    let id;
-    for (let i = 0; i > list.length; i++){
-        id = i;
-        return id;
-    }
+    let id = list.length+1
+
     list.push({
         id: id,
         task: task,
@@ -96,7 +92,7 @@ addTaskButton.addEventListener("click", function(){
     document.getElementById("modalForm").reset();
     document.getElementById("newTask").value = "";
 
-    console.log(list[0])
+    console.log(list[id-1])
 });
 
 // FILTRO POR PRIORIDAD
@@ -105,7 +101,7 @@ priorityFilterButton.addEventListener("click", function(){
     let listPriority = [];
     let prioritySelectLenght = document.getElementById("prioritySelect").length
 
-    for(let i = 1; i < prioritySelectLenght; i++){
+    for(let i = prioritySelectLenght-1; i >= 0; i--){
         let items = list.filter(task => task.priority == i);
         listPriority = listPriority.concat(items);
     }
