@@ -7,17 +7,19 @@ newTaskButton.addEventListener("click", function(){
     newTask.innerHTML = document.getElementById("newTask").value;
 });
 
-let addTaskButton = document.getElementById("addTask");
 let tbody = document.getElementById("tbody");
 let list = [];
 
+// BOTON AGREGAR NUEVAS TAREAS
+let addTaskButton = document.getElementById("addTask");
 addTaskButton.addEventListener("click", function(){
     let task = document.getElementById("newTask").value;
     let priority = parseInt(document.getElementById("prioritySelect").value);
     let urgency = parseInt(document.getElementById("urgencySelect").value);
-    let lenghtHours = document.getElementById("lenghtSelectHours").value;
-    let lenghtMinutes = document.getElementById("lenghtSelectMinutes").value;
+    let lenghtHours = parseInt(document.getElementById("lenghtSelectHours").value);
+    let lenghtMinutes = parseInt(document.getElementById("lenghtSelectMinutes").value);
     let lenghtBreak = document.getElementById("breakSelect");
+    let lenghtTotal = lenghtHours*60 + lenghtMinutes;
 
     let priorityText;
     let urgencyText;
@@ -79,7 +81,8 @@ addTaskButton.addEventListener("click", function(){
         priority: priority,
         urgency: urgency,
         lenghtHours: lenghtHours,
-        lenghtMinutes: lenghtMinutes
+        lenghtMinutes: lenghtMinutes,
+        lenghtTotal: lenghtTotal
     })
 
     let tr = document.createElement("tr");
@@ -93,10 +96,81 @@ addTaskButton.addEventListener("click", function(){
     document.getElementById("modalForm").reset();
     document.getElementById("newTask").value = "";
 
-    console.log(list);
+    console.log(list[0])
 });
 
+// FILTRO POR PRIORIDAD
 let priorityFilterButton = document.getElementById("priorityFilter");
+priorityFilterButton.addEventListener("click", function(){
+    let listPriority = [];
+    let prioritySelectLenght = document.getElementById("prioritySelect").length
+
+    for(let i = 1; i < prioritySelectLenght; i++){
+        let items = list.filter(task => task.priority == i);
+        listPriority = listPriority.concat(items);
+    }
+
+    tbody.innerHTML = "";
+
+    for (let i = 0; i < listPriority.length; i++) {
+        
+        let tr = document.createElement("tr");
+
+        let obj = listPriority[i];
+        let task = obj.task;
+        let priorityText = obj.priority;
+        let urgencyClass = obj.urgencyClass;
+        let urgencyText = obj.urgency;
+        let lenghtMinutesText;
+        let lenghtHoursText;
+        let lenghtBreakText;
+        
+        if(obj.lenghtMinutes == "0" && obj.lenghtHours == "0"){
+            lenghtBreakText = "break!";
+            lenghtHoursText = "";
+            lenghtMinutesText = "";
+        } else if(obj.lenghtHours = "0"){
+            lenghtBreakText = "";
+            lenghtHoursText = "";
+            lenghtMinutesText = obj.lenghtMinutes;
+        } else if(obj.lenghtMinutes = "0") {
+            lenghtBreakText = "";
+            lenghtHoursText = obj.lenghtHours;
+            lenghtMinutesText = "";
+        } else{
+            lenghtBreakText = "";
+            lenghtHoursText = obj.lenghtHours;
+            lenghtMinutesText = obj.lenghtMinutes;
+            }
+        
+        
+
+        if(obj.priority == "1"){
+            priorityText = "MINOR";
+        } else if(obj.priority == "2"){
+            priorityText = "MEDIUM"
+        } else if(obj.priority == "3"){
+            priorityText = "MAJOR"
+        }
+    
+        if(obj.urgency == "1"){
+            urgencyText = "today"
+            urgencyClass = "today"
+        } else if(obj.urgency == "2"){
+            urgencyText = "tomorrow"
+            urgencyClass = "tomorrow"
+        } else if(obj.urgency == "3"){
+            urgencyText = "has time"
+            urgencyClass = "hasTime"
+        }
+
+        tr.innerHTML = `<td class="task"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> ${task}</td>
+                        <td class="priority"><div class="${priorityText}">${priorityText}</div></td>
+                        <td><div class="urgency ${urgencyClass}">${urgencyText}</div></td>
+                        <td class="lenght"><p class="hours">${lenghtHoursText}</p><p class="minutes">${lenghtMinutesText}</p><p class="break">${lenghtBreakText}</p></td>`;
+        tbody.appendChild(tr);
+    }
+});
 
 let prueba = [
     {
@@ -172,26 +246,24 @@ let prueba = [
         urgency: 3,
     },
 ]
+// FILTRO POR URGENCIA
+let urgencyFilterButton = document.getElementById("urgencyFilter");
+urgencyFilterButton.addEventListener("click", function(){
+    let listUrgency = [];
+    let urgencySelectLenght = document.getElementById("urgencySelect").length
 
-let urgencySelectLenght = document.getElementById("urgencySelect").length
-
-priorityFilterButton.addEventListener("click", function(){
-    let listPriority = [];
-    let prioritySelectLenght = document.getElementById("prioritySelect").length
-
-    for(let i = 1; i < prioritySelectLenght; i++){
-        let items = list.filter(task => task.priority == i);
-        // listPriority.concat(list);
-        listPriority = listPriority.concat(items);
+    for(let i = 1; i < urgencySelectLenght; i++){
+        let items = list.filter(task => task.urgency == i);
+        listUrgency = listUrgency.concat(items);
     }
 
     tbody.innerHTML = "";
 
-    for (let i = 0; i < listPriority.length; i++) {
+    for (let i = 0; i < listUrgency.length; i++) {
         
         let tr = document.createElement("tr");
 
-        let obj = listPriority[i];
+        let obj = listUrgency[i];
         let task = obj.task;
         let priorityText = obj.priority;
         let urgencyClass = obj.urgencyClass;
